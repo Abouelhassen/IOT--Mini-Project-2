@@ -22,7 +22,7 @@ This project showcases a wireless communication setup employing two Xiao BLE ESP
 ---
 1. First, clonse the repository
 2. Hardware Setup: Connect transmitter esp32 board with MPU6050
-<img width="400" alt="Screenshot 2024-01-31 at 10 15 14 PM" src="https://github.com/Abouelhassen/IOT--Mini-Project-2/assets/64018612/d8dd158f-d3bb-45e4-b293-1117406885cf">
+
 
 3. Edge Impulse Setup:
 - First, create an account on Edge Impulse
