@@ -1,7 +1,9 @@
 # IOT--Mini-Project-2
-- Toseef Ahmed   2307270
-- Hung Trinh     2307229
-- Mazen Hassaan  2307227
+| **Student name**                                             | **Student ID**                 |
+| :--------------------------------------------------- | :--------------------------- |
+| Toseef Ahmed |  2307270 |
+| Hung Trinh   |  2307229 |
+| Mazen Hassaan | 2307227 |
 ---
 This project showcases a wireless communication setup employing two Xiao BLE ESP32-C3 boards. The transmitting board is integrated with an MPU6050 accelerometer. The system is engineered to identify movements using the MPU6050.
 
