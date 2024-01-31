@@ -44,8 +44,11 @@ This project showcases a wireless communication setup employing two Xiao BLE ESP
    - Proceed to the NN classifier, choose the ESP Eye board, and initiate the model training. Move on to the deployment section, opt for the Arduino IDE, and initiate the build process. Generate the Arduino library through these steps. Then, Open the Arduino IDE, navigate to Sketch, choose Include Library, add the zip file, and select the downloaded library from Edge Impulse.
    - The model library can be found in the repository. Uplaod the firmware in the transmitter and then try performing up down and left right movements. They will be recognized and picked up by the transmitter board and they will be sent to be displayed in the console.
    - The Console  will display whether if the movements are either left right movements or up down and this will be identified by the state. If it's on, then a left right movement has been identified, if the state is off, then an up down movement was identified.
-  
-   - 
+
+
+# Video Demonstration:
+---
+https://drive.google.com/drive/folders/1A7tCZA68bAW4zLrpGGLcQZjfZEfavsw8?usp=sharing
 
 
 
