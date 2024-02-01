@@ -35,17 +35,17 @@ This project showcases a wireless communication setup employing two Xiao BLE ESP
    - After that the device is connected with the Edge Impulse and the project is now initiated:
      ![image](https://github.com/Abouelhassen/IOT--Mini-Project-2/assets/64018612/622c82eb-dc0b-4abc-8305-74847fc672ee)
    - By clicking on the data acqusition on the side menu, the set for model training is captured
-   - The next step would be adding at least 15 sample models for each gesture of the overall gestures
+   - The next step would be adding at least 15-20 sample models for each movement of the sensor. Depending upon your use case, you may want to increase the dataset. Split the training and testing data in 80:20 ratio. 
      ![image](https://github.com/Abouelhassen/IOT--Mini-Project-2/assets/64018612/9f21f6f4-0738-4352-8ff4-abba971c47df)
 
    - By going to the Impulse Design on the left menu, you can add spectral analysys as a processing block and Neural Network Classification as a learning block. A specific window size has to be kept and then the impulse is saved.
    - ![image](https://github.com/Abouelhassen/IOT--Mini-Project-2/assets/64018612/5f350758-3991-4ab1-bb8e-821afb7d2e81)
    - Now, it's time to head to spectral features to generate features.
    - ![image](https://github.com/Abouelhassen/IOT--Mini-Project-2/assets/64018612/58a8cdf2-ae9a-483d-8e4d-8f975b89598e)
-   - Proceed to the NN classifier, choose the ESP Eye board, and initiate the model training. Move on to the deployment section, opt for the Arduino IDE, and initiate the build process. Generate the Arduino library through these steps. Then, Open the Arduino IDE, navigate to Sketch, choose Include Library, add the zip file, and select the downloaded library from Edge Impulse.
+   - Proceed to the NN classifier, choose the ESP Eye board, and initiate the model training. Change model parameters such as learning rate, learning window and number of epochs to fine tune your model. 
+   - Move on to the deployment section, opt for the Arduino IDE, and initiate the build process. Generate the Arduino library through these steps. Then, Open the Arduino IDE, navigate to Sketch, choose Include Library, add the zip file, and select the downloaded library from Edge Impulse.
    - The model library can be found in the repository. Uplaod the firmware in the transmitter and then try performing up down and left right movements. They will be recognized and picked up by the transmitter board and they will be sent to be displayed in the console.
    - The Console  will display whether if the movements are either left right movements or up down and this will be identified by the state. If it's on, then a left right movement has been identified, if the state is off, then an up down movement was identified.
-
 
 # Video Demonstration:
 ---
