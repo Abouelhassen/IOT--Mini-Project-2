@@ -2,53 +2,19 @@
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
 #include <esp_now.h>
-#include <WiFi.h>
 #include <ahmedtos-project-1_inferencing.h>
 
 // Constants
 #define MAX_ACCEPTED_RANGE  2.0f        
 #define SCALE_FACTOR 0.08
 
-// MPU6050 and ESP-NOW objects
+
 Adafruit_MPU6050 mpu;
-esp_now_peer_info_t peerInfo;
-
-// Data Structure for ESP-NOW
-struct struct_message {
-    int b;
-} myData;
-
-// Broadcast Address for ESP-NOW
-uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-
-// Callback when data is sent
-void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
-  // Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
-}
 
 void setup() {
   Serial.begin(115200);
   pinMode(5, OUTPUT);
   digitalWrite(5, HIGH);
-  WiFi.mode(WIFI_STA);
-
-  // Initialize ESP-NOW
-  if (esp_now_init() != ESP_OK) {
-    Serial.println("Error initializing ESP-NOW");
-    return;
-  }
-  esp_now_register_send_cb(OnDataSent);
-
-  // Register peer
-  memcpy(peerInfo.peer_addr, broadcastAddress, 6);
-  peerInfo.channel = 0;  
-  peerInfo.encrypt = false;
-
-  // Add peer        
-  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
-    Serial.println("Failed to add peer");
-    return;
-  }
 
   // Initialize MPU6050
   if (!mpu.begin()) {
@@ -95,9 +61,9 @@ void loop() {
     return;
   }
 
-//0 horizontal
+//0 yaw
 //1 idle
-// 2 vertical
+// 2 pitch
 
   // Serial.println("lable");
   
@@ -105,30 +71,14 @@ void loop() {
         // Serial.println(result.classification[1].label); //vertical
         Serial.println("Yaw Movement Detected");
     }
-   else if(result.classification[2].value > 0.7) {
-        Serial.println(result.classification[2].label);
-        // Serial.println("vertical");
+   else if(result.classification[1].value > 0.7) {
+        //Serial.println(result.classification[2].label);
+        Serial.println("Sensor is Idle");
   }
-
-// else if(result.classification[0].value > 0.7) {
-//         Serial.println(result.classification[0].label);
-//   }
-    // for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-    //   if (result.classification[ix].value > 0.7) {
-    //     Serial.println(result.classification[ix].label); //vertical
-    //     // Serial.println("Movement Detected");
-    // }
-    // // Serial.println("==========================================================================================");
-  // }
-
-  // if (result.classification[0].value > 0.7) {
-    
-  // } else {
-  //   // digitalWrite(5, HIGH); // Example action
-  // }
-
-  // Send data over ESP-NOW
-  esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
+  else if(result.classification[2].value > 0.7) {
+        //Serial.println(result.classification[2].label);
+      Serial.println("Pitch movement detected");
+  }
 
   // Small delay to stabilize loop
   delay(100);
